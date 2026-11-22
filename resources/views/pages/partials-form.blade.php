@@ -1,0 +1,9 @@
+@if(session('success'))<div class="alert success" role="status">{{session('success')}}</div>@endif
+@if($errors->any())<div class="alert error" role="alert">Please check the information below and try again.<ul>@foreach($errors->all() as $error)<li>{{$error}}</li>@endforeach</ul></div>@endif
+<form action="{{route('enquiries.store')}}" method="post" class="enquiry-form">@csrf
+<div class="form-field hidden-honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+<div class="form-row"><label class="form-field">Your Name <span>*</span><input type="text" name="name" placeholder="Your full name" value="{{old('name')}}" maxlength="120" required></label><label class="form-field">Email Address <span>*</span><input type="email" name="email" placeholder="you@example.com" value="{{old('email')}}" maxlength="190" required></label></div>
+<div class="form-row"><label class="form-field">Phone (optional)<input type="tel" name="phone" placeholder="Your phone number" value="{{old('phone')}}" maxlength="25"></label><label class="form-field">I'm interested in<select name="type" required><option value="contact" @selected(old('type',$formType)==='contact')>General Enquiry</option><option value="volunteer" @selected(old('type',$formType)==='volunteer')>Volunteering</option><option value="partnership" @selected(old('type')==='partnership')>Partnership</option><option value="donation" @selected(old('type')==='donation')>Supporting a Cause</option></select></label></div>
+<label class="form-field">Your Message<textarea name="message" rows="5" maxlength="3000" placeholder="Tell us a little about your idea...">{{old('message')}}</textarea></label>
+<button type="submit" class="btn btn-blue btn-large">Send Enquiry <span>↗</span></button><p class="form-hint">Demo only — no donation payment will be taken.</p>
+</form>
