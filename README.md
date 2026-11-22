@@ -92,3 +92,15 @@ php artisan optimize:clear
 Use the existing MySQL database in your `.env`. The new migrations create `projects` and `donations` without changing existing enquiries or users. If Hostinger caches Blade views, run `php artisan view:clear`.
 
 For any real NGO or live donation collection, a verified payment gateway, signed webhook reconciliation, refunds, consent/privacy disclosures and appropriate legal/tax compliance are additional work.
+
+## Volunteer registration
+
+- Public form: `GET /volunteer/register`
+- Submission: `POST /volunteer/register` with CSRF protection, server-side validation, honeypot and request throttling
+- Admin directory: `GET /admin/volunteers`, login required
+- Admin review: `PATCH /admin/volunteers/{application}` for Pending, Reviewed, Approved or Rejected plus internal notes
+- Migration: `database/migrations/2026_11_22_000005_create_volunteer_applications_table.php`
+
+The form collects name, email, phone, city, preferred interest, availability, optional skills/motivation, and explicit demo-data consent. Registration is not an offer of volunteer placement, and no documents or identification numbers are requested.
+
+After deploying, run `php artisan migrate --force` from the Laravel application root and `php artisan optimize:clear`. Use a separate environment/database for any real NGO and publish an appropriate privacy policy and retention controls before collecting genuine applications.
