@@ -55,7 +55,7 @@
         <div class="home-project-progress-head"><span>Funding progress</span><strong>{{$progressLabel}}</strong></div>
         <div class="home-project-progress" role="progressbar" aria-label="Funding progress for {{$project->title}}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{round($progress)}}"><span style="width: {{number_format($progress,2,'.','')}}%"></span></div>
        </div>
-       <a class="home-project-link" href="{{route('donate',['project'=>$project->slug])}}#pledge-form">Support this project <span aria-hidden="true">↗</span></a>
+       <a class="home-project-link" href="{{route('projects.show',$project)}}">View project &amp; support <span aria-hidden="true">↗</span></a>
       </div>
      </article>
     @endforeach
