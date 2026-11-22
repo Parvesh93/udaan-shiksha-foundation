@@ -58,3 +58,11 @@ Use the organisation's verified legal name, registration details, written-approv
 ## Notes
 
 This is a demo application, not a deployed production NGO website. Run Composer install and configure the environment before using it. The version committed to GitHub includes the Laravel application and web assets; a standalone HTML preview is included separately in the original project archive.
+
+## Portfolio redesign and stock photography
+
+The November 2026 redesign introduces a mature teal/cream visual system, a photo-led homepage, redesigned programme cards, field-moment gallery, and consistent interior pages. Stock photos are currently served from Pexels' image CDN and require an internet connection; they are not committed as binary assets to this repository.
+
+Photo source: [Swastik Arora on Pexels](https://www.pexels.com/@swastik-arora-3479574/) — classroom photo IDs [18012456](https://www.pexels.com/photo/18012456/), [18012457](https://www.pexels.com/photo/18012457/), [18012458](https://www.pexels.com/photo/18012458/) and [18012462](https://www.pexels.com/photo/18012462/). Verify suitability and the Pexels licence before substituting or publishing any new media. The featured children are stock subjects, **not documented beneficiaries** of this fictional NGO.
+
+The site intentionally does not make unverified impact, registration, financial, or endorsement claims. The enquiry forms still save to the existing database; no donation payments are processed.
