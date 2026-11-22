@@ -1,0 +1,5 @@
+@extends('layouts.app')
+@section('content')
+<section class="interior-hero compact"><div class="container"><div class="eyebrow">✦ MAKE A DIFFERENCE</div><h1>Good things happen <em>together.</em></h1><p>There are many ways to bring joy, opportunity, and possibility into a child's life.</p></div></section>
+<section class="section"><div class="container involvement-grid"><div class="involve-cards"><article><span>🙌</span><h3>Volunteer with us</h3><p>Share your time, talents, and energy to help inspire young learners.</p></article><article><span>🤝</span><h3>Become a partner</h3><p>Explore collaborative ideas for education and community enrichment.</p></article><article id="support"><span>💛</span><h3>Support the vision</h3><p>Express interest in supporting a programme. This demo does not collect or process payments.</p></article></div><div class="form-card"><div class="eyebrow">✦ START A CONVERSATION</div><h2>Let's create some <em>good together.</em></h2>@include('pages.partials-form',['formType'=>'volunteer'])</div></div></section>
+@endsection
