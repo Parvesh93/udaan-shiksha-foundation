@@ -1,0 +1,22 @@
+# Hostinger shared-hosting fallback when the Laravel app itself is in public_html.
+# Preferred production setup: move the app outside public_html and point the
+# web document root directly to the Laravel public/ directory.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Do not serve application internals from public_html.
+    RewriteRule ^(?:\.git|app|bootstrap|config|database|resources|routes|storage|vendor)(?:/|$) - [F,NC]
+    RewriteRule ^(?:artisan|composer\.(?:json|lock)|package(?:-lock)?\.json|phpunit\.xml|README\.md|\.env(?:\..*)?|\.gitignore|\.htaccess)$ - [F,NC]
+    RewriteRule ^public/(?:\.env(?:\..*)?|\.git(?:/|$)) - [F,NC]
+
+    # Pass every public URL to Laravel's public/ entrypoint.
+    # THE_REQUEST guards against repeatedly rewriting the same request.
+    RewriteCond %{REQUEST_URI} !/public/ [NC]
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+<FilesMatch "(^\.|\.(?:env|ini|log|sql|bak|lock)$)">
+    Require all denied
+</FilesMatch>
