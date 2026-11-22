@@ -18,7 +18,7 @@ class PublicDonationController extends Controller {
   $received=(float)$project->donations()->where('status','received')->sum('amount');
   $goal=(float)($project->goal_amount??0);
   $progress=$goal>0?min(100,max(0,($received/$goal)*100)):0;
-  $related=Project::query()->where('status','active')->whereKeyNot($project->id)
+  $related=Project::query()->where('status','active')->where('id','!=',$project->id)
     ->orderByDesc('featured')->latest()->limit(3)->get();
   return view('pages.project-detail',[
     'title'=>$project->title,'page'=>'project','project'=>$project,
