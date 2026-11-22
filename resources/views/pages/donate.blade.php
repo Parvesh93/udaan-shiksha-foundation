@@ -7,7 +7,7 @@
 @if($project->image_url)<img src="{{$project->image_url}}" alt="Illustrative image for {{$project->title}}" loading="lazy">@else<div class="donation-project-fallback">Education creates opportunity</div>@endif
 <div class="donation-project-body"><span class="eyebrow">EDUCATION PROJECT</span><h3>{{$project->title}}</h3><p>{{$project->summary}}</p>
 @if($project->goal_amount!==null)<div class="funding-meta">Verified recorded contributions: ₹{{number_format($project->raised_amount,2)}} <span>Illustrative goal: ₹{{number_format((float)$project->goal_amount,2)}}</span></div>@endif
-<a class="btn btn-outline" href="{{route('donate',['project'=>$project->slug])}}#pledge-form">Support this project ↗</a></div></article>
+<a class="btn btn-outline" href="{{route('projects.show',$project)}}">View project &amp; support ↗</a></div></article>
 @empty<div class="donation-project-empty"><h3>General Education Fund</h3><p>Projects will appear here after an administrator publishes them. You may still register general support interest using the form below.</p></div>@endforelse
 </div></div></section>
 <section class="section section-muted" id="pledge-form"><div class="container donate-form-grid"><div><span class="eyebrow">EXPRESS YOUR SUPPORT</span><h2>Every contribution begins with intent.</h2><p>This demonstration records donation pledges in the admin dashboard. It does not process payments, send tax receipts or collect credit-card details.</p><p>After submitting, your pledge will be saved as <strong>Pending / Pledged</strong>, not a received donation.</p></div><div class="form-card">
