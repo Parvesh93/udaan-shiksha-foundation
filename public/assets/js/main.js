@@ -55,3 +55,36 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHeader();
   }
 });
+
+/* Project carousel controls: native scroll snapping with keyboard and touch support. */
+document.addEventListener('DOMContentLoaded', () => {
+  const rail=document.querySelector('[data-project-carousel]');
+  if(!rail) return;
+  const prev=document.querySelector('[data-project-prev]');
+  const next=document.querySelector('[data-project-next]');
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+  const step=()=>{
+    const card=rail.querySelector('.home-project-card');
+    if(!card)return rail.clientWidth;
+    const gap=parseFloat(getComputedStyle(rail).columnGap)||0;
+    return card.getBoundingClientRect().width+gap;
+  };
+  const update=()=>{
+    if(prev)prev.disabled=rail.scrollLeft<4;
+    if(next)next.disabled=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-4;
+  };
+  const move=dir=>{
+    rail.scrollBy({left:step()*dir,behavior:reduced.matches?'auto':'smooth'});
+  };
+  if(prev)prev.addEventListener('click',()=>move(-1));
+  if(next)next.addEventListener('click',()=>move(1));
+  rail.addEventListener('scroll',update,{passive:true});
+  rail.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
+      e.preventDefault();
+      move(e.key==='ArrowRight'?1:-1);
+    }
+  });
+  window.addEventListener('resize',update,{passive:true});
+  update();
+});

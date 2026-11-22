@@ -4,7 +4,7 @@
 <title>{{ $title ?? 'Education for Every Child' }} | Udaan Shiksha Foundation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{asset('assets/css/style.css')}}?v=20261122-motion-1"></head>
+<link rel="stylesheet" href="{{asset('assets/css/style.css')}}?v=20261122-project-carousel-1"></head>
 <body><div class="demo-strip">PORTFOLIO CONCEPT <span>·</span> Fictional NGO &amp; illustrative content <span>·</span> No live donation collection</div>
 <header class="site-header"><div class="container nav-shell">
 <a class="brand" href="{{route('home')}}" aria-label="Udaan Shiksha Foundation home"><span class="brand-mark">u<span>.</span></span><span class="brand-words"><strong>udaan</strong><small>SHIKSHA FOUNDATION</small></span></a>
@@ -19,4 +19,4 @@
 <div><h4>Get Involved</h4><a href="{{route('volunteer.register')}}">Volunteer Registration</a><a href="{{route('donate')}}">Support a Cause</a><a href="{{route('contact')}}">Partner With Us</a></div>
 <div><h4>Connect</h4><p>Interested in supporting education? Start a conversation with us.</p><a href="{{route('contact')}}" class="footer-contact">Send an Enquiry ↗</a></div>
 </div><div class="footer-bottom"><span>© {{date('Y')}} Udaan Shiksha Foundation · Portfolio demonstration only</span><span>Crafted by PP DESIGN AND TECH <span class="footer-sep">·</span> <a href="{{route('admin.login')}}">Admin</a></span></div></div></footer>
-<script defer src="{{asset('assets/js/main.js')}}?v=20261122-motion-1"></script></body></html>
+<script defer src="{{asset('assets/js/main.js')}}?v=20261122-project-carousel-1"></script></body></html>

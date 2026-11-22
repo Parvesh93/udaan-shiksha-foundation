@@ -25,6 +25,47 @@
 <article class="program-card"><a href="{{route('programs')}}#creativity"><img src="{{ config('showcase_images.home_program_creativity') }}" alt="Indian children participating in classroom learning" loading="lazy"></a><div class="program-content"><span class="program-number">02 / DEVELOPMENT</span><h3>Creative Development</h3><p>Encouraging curiosity, self-expression and problem-solving through activity-based learning.</p><a class="card-link" href="{{route('programs')}}#creativity">Explore program <span>↗</span></a></div></article>
 <article class="program-card"><a href="{{route('programs')}}#life-skills"><img src="{{ config('showcase_images.home_program_skills') }}" alt="Children engaged in a classroom education activity" loading="lazy"></a><div class="program-content"><span class="program-number">03 / LIFE SKILLS</span><h3>Skills for Tomorrow</h3><p>Nurturing communication, confidence, teamwork and resilience for life beyond the classroom.</p><a class="card-link" href="{{route('programs')}}#life-skills">Explore program <span>↗</span></a></div></article>
 </div></div></section>
+
+<section class="section home-projects-section" id="our-projects" aria-labelledby="home-projects-title">
+ <div class="container">
+  <div class="home-projects-heading">
+   <div><span class="eyebrow">OUR PROJECTS</span><h2 id="home-projects-title">Creating opportunities, <em>one project at a time.</em></h2><p>Explore our education-focused initiatives and discover how to support a cause.</p></div>
+   @if($projects->count()>1)<div class="home-projects-controls" aria-label="Project carousel controls"><button type="button" class="project-arrow" data-project-prev aria-label="Previous projects">←</button><button type="button" class="project-arrow" data-project-next aria-label="Next projects">→</button></div>@endif
+  </div>
+  @if($projects->isNotEmpty())
+   <div class="home-projects-carousel" data-project-carousel role="region" aria-roledescription="carousel" aria-label="Active projects" tabindex="0">
+    @foreach($projects as $project)
+     @php
+      $received = max(0,(float)($project->received_amount ?? 0));
+      $goal = (float)($project->goal_amount ?? 0);
+      $progress = $goal > 0 ? min(100, max(0, ($received / $goal) * 100)) : 0;
+      $progressLabel = $goal > 0 ? number_format($progress, 0).'%' : 'Goal pending';
+     @endphp
+     <article class="home-project-card" aria-label="{{$project->title}}">
+      <div class="home-project-photo">
+       @if($project->image_url)<img src="{{$project->image_url}}" alt="Illustrative photograph for {{$project->title}}" loading="lazy" decoding="async" onerror="this.style.display='none';this.parentElement.classList.add('image-missing')">
+       @else<div class="home-project-photo-placeholder">Education opens doors</div>@endif
+       <span class="home-project-status">ONGOING PROJECT</span>
+      </div>
+      <div class="home-project-body">
+       <h3>{{$project->title}}</h3>
+       <p class="home-project-summary">{{$project->summary}}</p>
+       <div class="home-project-funding">
+        <div class="home-project-amounts"><span>Verified received<strong>₹{{number_format($received,0)}}</strong></span><span class="goal-amount">Goal<strong>{{$goal>0?'₹'.number_format($goal,0):'Not set'}}</strong></span></div>
+        <div class="home-project-progress-head"><span>Funding progress</span><strong>{{$progressLabel}}</strong></div>
+        <div class="home-project-progress" role="progressbar" aria-label="Funding progress for {{$project->title}}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{round($progress)}}"><span style="width: {{number_format($progress,2,'.','')}}%"></span></div>
+       </div>
+       <a class="home-project-link" href="{{route('donate',['project'=>$project->slug])}}#pledge-form">Support this project <span aria-hidden="true">↗</span></a>
+      </div>
+     </article>
+    @endforeach
+   </div>
+   <div class="home-projects-foot"><p>Funding totals show only donations manually marked as received; pledges are not included. This is a fictional demonstration.</p><a href="{{route('donate')}}" class="text-link">Explore all active projects ↗</a></div>
+  @else
+   <div class="home-projects-empty"><div><span class="eyebrow">COMING SOON</span><h3>Education projects will appear here.</h3><p>Publish a project as Active from the admin dashboard to feature it on the homepage.</p></div><a class="btn btn-outline" href="{{route('donate')}}">Explore ways to support ↗</a></div>
+  @endif
+ </div>
+</section>
 <section class="section"><div class="container feature-grid"><div class="feature-media"><img src="{{ config('showcase_images.home_feature') }}" alt="Children learning in an Indian classroom" loading="lazy"><div class="image-caption">Stock photography · illustrative of the programme vision</div></div><div class="feature-copy"><span class="eyebrow">WHY OUR APPROACH MATTERS</span><h2>Learning is more than a classroom.</h2><p>A child's ability to flourish depends on their environment, confidence and the people who stand beside them. A meaningful education programme should address all three.</p><div class="feature-points"><div><span class="point-icon">01</span><div><h3>Child-centred learning</h3><p>Responding to individual needs and different learning abilities.</p></div></div><div><span class="point-icon">02</span><div><h3>Beyond academics</h3><p>Encouraging creativity, wellbeing and essential life skills.</p></div></div><div><span class="point-icon">03</span><div><h3>Communities as partners</h3><p>Bringing families, volunteers and educators into the journey.</p></div></div></div><a href="{{route('impact')}}" class="btn btn-outline">Our Approach <span>↗</span></a></div></div></section>
 <section class="section gallery-section"><div class="container"><div class="section-top"><div><span class="eyebrow">FIELD MOMENTS</span><h2>Every learning moment matters.</h2><p>Sample stock images show the type of education-focused storytelling this demo website can support.</p></div></div><div class="gallery-grid"><img src="{{ config('showcase_images.home_gallery_one') }}" alt="Schoolchildren during a class" loading="lazy"><img src="{{ config('showcase_images.home_gallery_two') }}" alt="Students attending school" loading="lazy"><img src="{{ config('showcase_images.home_gallery_three') }}" alt="Schoolchildren engaged in classroom learning" loading="lazy"></div><p class="gallery-credit">Images: selected Indian education stock photographs / Pexels; not photographs of activities organised by Udaan Shiksha Foundation. These images are stock photos and do not depict activities of Udaan Shiksha Foundation.</p></div></section>
 <section class="section transparency-section"><div class="container transparency-grid"><div><span class="eyebrow">ACCOUNTABILITY MATTERS</span><h2>Building trust through transparency.</h2><p>Clear programme goals, responsible stewardship and honest reporting help supporters understand how an NGO makes a difference.</p></div><div class="transparency-list"><div><strong>01</strong><span>Clear programme objectives and outcomes</span></div><div><strong>02</strong><span>Ethical documentation and child safeguarding</span></div><div><strong>03</strong><span>Responsible reporting and community feedback</span></div><p>This is a design demonstration. No audited results, legal registrations or partner endorsements are claimed.</p></div></div></section>
