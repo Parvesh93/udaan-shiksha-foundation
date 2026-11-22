@@ -104,3 +104,9 @@ For any real NGO or live donation collection, a verified payment gateway, signed
 The form collects name, email, phone, city, preferred interest, availability, optional skills/motivation, and explicit demo-data consent. Registration is not an offer of volunteer placement, and no documents or identification numbers are requested.
 
 After deploying, run `php artisan migrate --force` from the Laravel application root and `php artisan optimize:clear`. Use a separate environment/database for any real NGO and publish an appropriate privacy policy and retention controls before collecting genuine applications.
+
+## Indian-context stock photo refresh
+
+The website's visual references are centralised in `config/showcase_images.php`. Sections use **different photos** selected from actual Pexels listings featuring Indian education settings: classrooms, girls' education, rural schooling, reading and art activities. To change an image later, update just its URL in the configuration file. Contact and donation pages now include appropriate photographic hero sections.
+
+These are **illustrative stock photographs, not photographs of Udaan's programmes, donors or beneficiaries**. Credits and source page URLs for image IDs are accessible at `https://www.pexels.com/photo/<ID>/`. Source IDs in this collection: 18012462, 18650478, 4643352, 31864438, 35558791, 15119089, 18012459, 3231358, 40582287, 3231359, 35152622, 18012456, 32231601, 33947140, 18012458, 18012457. Photographs are loaded from the Pexels CDN rather than shipped in the repository. Confirm usage rights, and for long-term reliability use local optimized copies where possible. If Laravel configuration is cached on the server, run `php artisan config:clear` followed by `php artisan optimize:clear` after deployment.

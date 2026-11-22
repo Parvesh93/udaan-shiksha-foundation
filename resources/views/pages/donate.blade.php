@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<section class="interior-hero interior-hero-compact"><div class="container"><span class="eyebrow">SUPPORT EDUCATION</span><h1>Help more children find opportunity.</h1><p>Explore how a transparent, project-linked donation experience could work for an education nonprofit.</p></div></section>
+<section class="interior-hero"><div class="container interior-hero-grid"><div><span class="eyebrow">SUPPORT EDUCATION</span><h1>Help more children find opportunity.</h1><p>Explore how a transparent, project-linked donation experience could work for an education nonprofit.</p></div><img src="{{ config('showcase_images.donate_hero') }}" alt="Indian children reading together in a classroom; illustrative stock photograph" fetchpriority="high"></div></section>
 <section class="section"><div class="container"><div class="section-top"><div><span class="eyebrow">CHOOSE YOUR CAUSE</span><h2>Projects worth supporting</h2><p>These are illustrative programmes for this fictional NGO concept. No actual payments are accepted.</p></div></div>
 <div class="donation-projects">
 @forelse($projects as $project)<article class="donation-project">
