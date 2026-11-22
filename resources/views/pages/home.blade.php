@@ -1,6 +1,21 @@
 @extends('layouts.app')
 @section('content')
-<section class="hero"><div class="hero-photo" style="background-image:linear-gradient(90deg,rgba(10,34,43,.91) 0%,rgba(10,34,43,.74) 43%,rgba(10,34,43,.18) 100%),url('{{ config('showcase_images.home_hero') }}')"></div><div class="container hero-inner"><div class="hero-content"><div class="eyebrow light">EDUCATION CHANGES LIVES</div><h1>Every child deserves the chance to <em>thrive.</em></h1><p>Creating pathways to learning, confidence and opportunity for children who need them most.</p><div class="hero-buttons"><a href="{{route('donate')}}" class="btn btn-accent btn-large">Support Our Vision <span>↗</span></a><a href="{{route('programs')}}" class="btn btn-ghost btn-large">Explore Our Work <span>↗</span></a></div></div></div><div class="hero-bottom"><div class="container"><span>FOUNDATIONAL EDUCATION</span><span>CHILD DEVELOPMENT</span><span>COMMUNITY PARTICIPATION</span></div></div></section>
+<section class="hero"><div class="hero-photo" style="background-image:linear-gradient(90deg,rgba(10,34,43,.91) 0%,rgba(10,34,43,.74) 43%,rgba(10,34,43,.18) 100%),url('{{ config('showcase_images.home_hero') }}')"></div><div class="container hero-inner"><div class="hero-content"><div class="eyebrow light">EDUCATION CHANGES LIVES</div><h1>Every child deserves the chance to <em>thrive.</em></h1><p>Creating pathways to learning, confidence and opportunity for children who need them most.</p><div class="hero-buttons"><a href="{{route('donate')}}" class="btn btn-accent btn-large">Support Our Vision <span>↗</span></a><a href="{{route('programs')}}" class="btn btn-ghost btn-large">Explore Our Work <span>↗</span></a></div></div></div><div class="hero-bottom hero-pillars" aria-label="Our three focus areas">
+  <div class="container hero-pillars-grid">
+    <div class="hero-pillar">
+      <span class="hero-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5c-2.5-2-5.5-2.5-9-2v13c3.5-.5 6.5 0 9 2 2.5-2 5.5-2.5 9-2v-13c-3.5-.5-6.5 0-9 2Z"/><path d="M12 6.5v13"/></svg></span>
+      <span class="hero-pillar-copy"><strong>Foundational Education</strong><small>Opening doors through learning</small></span>
+    </div>
+    <div class="hero-pillar">
+      <span class="hero-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8.5-5.7-8.5-11.7a4.8 4.8 0 0 1 8.5-3 4.8 4.8 0 0 1 8.5 3C20.5 15.3 12 21 12 21Z"/><path d="M9 12h6M12 9v6"/></svg></span>
+      <span class="hero-pillar-copy"><strong>Child Development</strong><small>Nurturing skills and confidence</small></span>
+    </div>
+    <div class="hero-pillar">
+      <span class="hero-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-2a5.5 5.5 0 0 1 11 0v2H3.5Z"/><path d="M16.5 5.5a3 3 0 0 1 0 5.8M17 14a4.5 4.5 0 0 1 3.5 4.5V19"/></svg></span>
+      <span class="hero-pillar-copy"><strong>Community Participation</strong><small>Stronger futures, together</small></span>
+    </div>
+  </div>
+</div></section>
 <style>
 /* Self-contained marquee styling prevents stale external CSS from stacking both copies. */
 .udaan-ticker{display:block!important;position:relative!important;width:100%!important;overflow:hidden!important;box-sizing:border-box!important;background:#e9f2ee!important;border-top:1px solid #d6e8df;border-bottom:1px solid #d6e8df;padding:18px 0!important;color:#245d50}
