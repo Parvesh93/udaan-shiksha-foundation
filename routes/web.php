@@ -6,12 +6,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminProjectController;
 use App\Http\Controllers\AdminDonationController;
 use App\Http\Controllers\PublicDonationController;
+use App\Http\Controllers\VolunteerApplicationController;
+use App\Http\Controllers\AdminVolunteerController;
 Route::get('/',[PageController::class,'home'])->name('home');
 Route::get('/about',[PageController::class,'about'])->name('about');
 Route::get('/programs',[PageController::class,'programs'])->name('programs');
 Route::get('/impact',[PageController::class,'impact'])->name('impact');
 Route::get('/get-involved',[PageController::class,'getInvolved'])->name('get-involved');
 Route::get('/contact',[PageController::class,'contact'])->name('contact');
+Route::get('/volunteer/register',[VolunteerApplicationController::class,'create'])->name('volunteer.register');
+Route::post('/volunteer/register',[VolunteerApplicationController::class,'store'])->middleware('throttle:3,1')->name('volunteer.store');
 Route::get('/donate',[PublicDonationController::class,'index'])->name('donate');
 Route::post('/donate',[PublicDonationController::class,'store'])->middleware('throttle:3,1')->name('donate.store');
 Route::post('/enquiries',[InquiryController::class,'store'])->middleware('throttle:5,1')->name('enquiries.store');
@@ -20,6 +24,8 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function(){Rou
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function(){
  Route::resource('projects',AdminProjectController::class)->except(['show']);
+ Route::get('/volunteers',[AdminVolunteerController::class,'index'])->name('volunteers.index');
+ Route::patch('/volunteers/{application}',[AdminVolunteerController::class,'update'])->name('volunteers.update');
  Route::get('/donations',[AdminDonationController::class,'index'])->name('donations.index');
  Route::post('/donations',[AdminDonationController::class,'store'])->name('donations.store');
  Route::patch('/donations/{donation}',[AdminDonationController::class,'update'])->name('donations.update');
