@@ -66,3 +66,29 @@ The November 2026 redesign introduces a mature teal/cream visual system, a photo
 Photo sources: Mikhail Nilov / Pexels photo 8923042, Yan Krukau / Pexels photo 8617970, Katerina Holmes / Pexels photo 5905921. The photos are illustrative and do not show beneficiaries of this fictional NGO.
 
 The site intentionally does not make unverified impact, registration, financial, or endorsement claims. The enquiry forms still save to the existing database; no donation payments are processed.
+
+## Projects and donation pledges (November 2026)
+
+### Admin
+- `/admin/projects` — create, edit, publish, complete and delete projects. Project fields: title, summary, description, HTTPS photo URL, funding goal and featured flag.
+- `/admin/donations` — see incoming pledges, create offline donation records, filter by status and mark transactions received only after checking a reference.
+- Deleting a project does **not** delete donation records. Their project association becomes empty.
+- The existing admin authentication is required for every project/donation management route.
+
+### Public website
+- `/donate` — lists **active** projects and provides a project-linked pledge form.
+- `/donate?project=project-slug` — preselects a project.
+- Submissions create `donations` records with status `pledged`, **not** `received`.
+- No payment processor, real charge, donor receipt or tax-exemption certificate is provided. Do not label these as processed payments.
+
+### Deploy to Hostinger
+Pull the latest GitHub `main` commit, then in the Laravel root run:
+
+```sh
+php artisan migrate --force
+php artisan optimize:clear
+```
+
+Use the existing MySQL database in your `.env`. The new migrations create `projects` and `donations` without changing existing enquiries or users. If Hostinger caches Blade views, run `php artisan view:clear`.
+
+For any real NGO or live donation collection, a verified payment gateway, signed webhook reconciliation, refunds, consent/privacy disclosures and appropriate legal/tax compliance are additional work.
