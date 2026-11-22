@@ -4,7 +4,7 @@
 <title>{{ $title ?? 'Education for Every Child' }} | Udaan Shiksha Foundation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{asset('assets/css/style.css')}}?v=20261122-project-detail-1"></head>
+<link rel="stylesheet" href="{{asset('assets/css/style.css')}}?v=20261122-hero-pillars-1"></head>
 <body><div class="demo-strip">PORTFOLIO CONCEPT <span>·</span> Fictional NGO &amp; illustrative content <span>·</span> No live donation collection</div>
 <header class="site-header"><div class="container nav-shell">
 <a class="brand" href="{{route('home')}}" aria-label="Udaan Shiksha Foundation home"><span class="brand-mark">u<span>.</span></span><span class="brand-words"><strong>udaan</strong><small>SHIKSHA FOUNDATION</small></span></a>
