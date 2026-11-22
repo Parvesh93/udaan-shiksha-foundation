@@ -5,7 +5,7 @@
 <title>@yield('title','Admin') | Udaan Shiksha Foundation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{asset('assets/css/admin.css')}}?v=20261122-forms-3">
+<link rel="stylesheet" href="{{asset('assets/css/admin.css')}}?v=20261122-volunteers-1">
 
 <style>
 /* Critical form layout: embedded to avoid stale cached admin styles on shared hosting */
@@ -50,9 +50,11 @@
   <div class="nav-divider"></div><div class="nav-label in-nav">PROJECTS &amp; DONATIONS</div>
  <a class="nav-item {{ request()->routeIs('admin.projects.*')?'active':'' }}" href="{{route('admin.projects.index')}}"><span class="nav-icon">▣</span> Projects</a>
  <a class="nav-item {{ request()->routeIs('admin.donations.*')?'active':'' }}" href="{{route('admin.donations.index')}}"><span class="nav-icon">◎</span> Donations</a>
+ <div class="nav-divider"></div><div class="nav-label in-nav">PEOPLE &amp; COMMUNITY</div>
+ <a class="nav-item {{ request()->routeIs('admin.volunteers.*')?'active':'' }}" href="{{route('admin.volunteers.index')}}"><span class="nav-icon">♧</span> Volunteer Applications</a>
  <div class="nav-divider"></div><div class="nav-label in-nav">COMMUNICATION</div>
   <a class="nav-item {{ request('type')==='contact'?'active':'' }}" href="{{route('admin.dashboard',['type'=>'contact'])}}"><span class="nav-icon">✉</span> Contact Enquiries</a>
-  <a class="nav-item {{ request('type')==='volunteer'?'active':'' }}" href="{{route('admin.dashboard',['type'=>'volunteer'])}}"><span class="nav-icon">♧</span> Volunteer Interest </a>
+  <a class="nav-item {{ request('type')==='volunteer'?'active':'' }}" href="{{route('admin.dashboard',['type'=>'volunteer'])}}"><span class="nav-icon">♧</span> Volunteer Enquiries </a>
   <a class="nav-item {{ request('type')==='partnership'?'active':'' }}" href="{{route('admin.dashboard',['type'=>'partnership'])}}"><span class="nav-icon">♧</span> Partnerships </a>
   <a class="nav-item {{ request('type')==='donation'?'active':'' }}" href="{{route('admin.dashboard',['type'=>'donation'])}}"><span class="nav-icon">♡</span> Support Interest </a>
   <div class="nav-divider"></div><div class="nav-label in-nav">MANAGE ENQUIRIES</div>
