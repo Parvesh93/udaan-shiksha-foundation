@@ -1,5 +1,62 @@
 @extends('layouts.app')
 @section('content')
+<style>
+/* Project details: critical CSS is local to this page so Hostinger's cached asset does not break the layout. */
+.project-detail-hero{background:#f3f8f5!important;padding:30px 0 64px!important}
+.project-detail-hero>.container,.project-detail-main>.container{max-width:1180px;width:calc(100% - 44px);margin:0 auto}
+.project-breadcrumb{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:12px!important;margin:8px 0 38px!important;color:#73877c!important;font-size:12px!important;line-height:1.5!important}
+.project-breadcrumb a{color:#167b78!important;text-decoration:none!important}
+.project-hero-grid{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:center!important;gap:55px!important}
+.project-hero-copy{min-width:0!important}
+.project-hero-copy h1{font-family:Manrope,Arial,sans-serif!important;font-size:clamp(2.5rem,3.9vw,4.1rem)!important;line-height:1.14!important;letter-spacing:-.045em!important;margin:10px 0 22px!important;max-width:620px!important;overflow-wrap:anywhere!important;color:#143a45!important}
+.project-hero-copy>p{font-size:16px!important;line-height:1.85!important;max-width:570px!important;color:#647a6f!important}
+.project-hero-actions{display:flex!important;flex-wrap:wrap!important;gap:12px!important;margin-top:28px!important}
+.project-hero-image{display:block!important;position:relative!important;height:390px!important;min-height:300px!important;overflow:hidden!important;border-radius:15px!important;background:linear-gradient(140deg,rgba(14,56,42,.04),rgba(14,56,42,.02)),url('{{config('showcase_images.programs_learning')}}') center/cover no-repeat!important;box-shadow:0 16px 45px rgba(19,70,48,.14)!important}
+.project-hero-image img{display:block;width:100%!important;height:100%!important;object-fit:cover!important}
+.project-hero-image .project-photo-fallback{display:none!important}
+.project-detail-main{padding:75px 0!important;background:#fff!important}
+.project-detail-grid{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(340px,.85fr)!important;align-items:start!important;gap:50px!important}
+.project-story,.project-donation-sidebar{min-width:0!important}
+.project-highlights{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;overflow:hidden!important;background:#f7faf8!important;border:1px solid #dfeae3!important;border-radius:12px!important;margin:0 0 45px!important}
+.project-highlights>div{display:flex!important;flex-direction:column!important;gap:8px!important;min-width:0!important;padding:20px 16px!important;border-right:1px solid #dfeae3!important}
+.project-highlights>div:last-child{border-right:0!important}
+.project-highlights span{display:block!important;font-size:11px!important;color:#798d80!important}
+.project-highlights strong{display:block!important;font-size:clamp(14px,1.4vw,18px)!important;line-height:1.4!important;color:#195c47!important;overflow-wrap:anywhere!important}
+.project-article h2{font-size:clamp(1.9rem,2.6vw,2.75rem)!important;line-height:1.27!important;margin:12px 0 24px!important}
+.project-description{font-size:15px!important;line-height:1.95!important;color:#65796d!important;overflow-wrap:anywhere!important}
+.project-description p{line-height:1.9!important}
+.project-outcome-panel{background:#edf5ef!important;border-left:3px solid #1c8062!important;padding:28px!important;margin-top:40px!important}
+.project-outcome-panel h3{font-size:20px!important;margin:8px 0 12px!important}
+.project-outcome-panel p{font-size:14px!important}
+.project-donation-sidebar{position:sticky!important;top:105px!important;scroll-margin-top:110px!important}
+.project-donation-card{background:#fff!important;border:1px solid #e1eae4!important;border-radius:15px!important;padding:30px!important;box-shadow:0 16px 45px rgba(23,70,52,.1)!important}
+.project-donation-card h2{font-size:25px!important;line-height:1.38!important;margin:9px 0 20px!important}
+.project-funding{padding:20px 0!important;border-top:1px solid #e1eae4!important;border-bottom:1px solid #e1eae4!important;margin-bottom:20px!important}
+.project-funding-figures{display:flex!important;justify-content:space-between!important;gap:12px!important}
+.project-funding-figures>div:last-child{text-align:right!important}
+.project-funding-figures span{display:block!important;font-size:11px!important;color:#84968a!important}
+.project-funding-figures strong{display:block!important;font-size:21px!important;line-height:1.4!important;color:#185f50!important;margin-top:5px!important}
+.project-progress-line{display:flex!important;justify-content:space-between!important;gap:8px!important;margin:18px 0 9px!important;font-size:12px!important;color:#728a7b!important}
+.project-progress-track{height:10px!important;overflow:hidden!important;background:#e5efe8!important;border-radius:99px!important}
+.project-progress-track>div{height:100%!important;border-radius:99px!important;background:linear-gradient(90deg,#2a9974,#16705b)!important}
+.project-pledge-notice{background:#f0f7f2!important;padding:14px 16px!important;border-radius:8px!important;margin:18px 0!important}
+.project-pledge-notice p{margin:6px 0 0!important;font-size:12px!important}
+.project-pledge-form{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:17px!important}
+.project-form-field{display:flex!important;flex-direction:column!important;gap:8px!important;min-width:0!important}
+.project-form-field>label{display:block!important;font-size:12px!important;font-weight:700!important;color:#315142!important}
+.project-form-field>input,.project-form-field>textarea{display:block!important;box-sizing:border-box!important;width:100%!important;min-width:0!important;padding:13px!important;background:#fff!important;border:1px solid #d6e3da!important;border-radius:7px!important;font:inherit!important}
+.project-amount-choices{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
+.project-amount-choices button{min-width:0!important;padding:12px 5px!important;border:1px solid #d4e7da!important;border-radius:7px!important;background:#f4faf6!important;color:#176b50!important;font-weight:700!important;cursor:pointer!important}
+.project-amount-choices button.is-selected{background:#d9eee1!important;border-color:#2d9774!important}
+.project-consent{display:flex!important;align-items:flex-start!important;gap:10px!important;font-size:11px!important;line-height:1.7!important}
+.project-consent input{width:17px!important;height:17px!important;flex:none!important;accent-color:#167b78!important}
+.project-submit{display:flex!important;width:100%!important;align-items:center!important;justify-content:center!important}
+.project-form-footnote{font-size:11px!important;line-height:1.7!important}
+.project-related-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:22px!important}
+@media(max-width:950px){.project-hero-grid{gap:28px!important}.project-detail-grid{grid-template-columns:minmax(0,1fr)!important;gap:40px!important}.project-donation-sidebar{position:static!important}}
+@media(max-width:680px){.project-detail-hero{padding:20px 0 40px!important}.project-hero-grid{grid-template-columns:minmax(0,1fr)!important;gap:25px!important}.project-hero-image{height:260px!important;min-height:260px!important}.project-hero-copy h1{font-size:clamp(2.1rem,9vw,2.9rem)!important}.project-detail-main{padding:45px 0!important}.project-highlights{grid-template-columns:minmax(0,1fr)!important}.project-highlights>div{border-right:0!important;border-bottom:1px solid #dfeae3!important;padding:14px 18px!important}.project-highlights>div:last-child{border-bottom:0!important}.project-donation-card{padding:22px!important}.project-related-grid{grid-template-columns:minmax(0,1fr)!important}}
+</style>
+
 <section class="project-detail-hero">
  <div class="container">
   <nav class="project-breadcrumb" aria-label="Breadcrumb"><a href="{{route('home')}}">Home</a><span>/</span><a href="{{route('home')}}#our-projects">Projects</a><span>/</span><span aria-current="page">{{$project->title}}</span></nav>
