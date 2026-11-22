@@ -15,7 +15,7 @@
  <div class="org-card"><div class="org-avatar">U</div><div><strong>Udaan Shiksha Foundation</strong><small>Education &amp; child development</small></div></div>
  <div class="nav-label">OVERVIEW</div>
  <nav class="sidebar-nav" aria-label="Administration">
-  <a class="nav-item {{ !request()->filled('type') && !request()->filled('status') ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><span class="nav-icon">▦</span> Dashboard</a>
+  <a class="nav-item {{ request()->routeIs('admin.dashboard') && !request()->filled('type') && !request()->filled('status') ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><span class="nav-icon">▦</span> Dashboard</a>
   <div class="nav-divider"></div><div class="nav-label in-nav">PROJECTS &amp; DONATIONS</div>
  <a class="nav-item {{ request()->routeIs('admin.projects.*')?'active':'' }}" href="{{route('admin.projects.index')}}"><span class="nav-icon">▣</span> Projects</a>
  <a class="nav-item {{ request()->routeIs('admin.donations.*')?'active':'' }}" href="{{route('admin.donations.index')}}"><span class="nav-icon">◎</span> Donations</a>
