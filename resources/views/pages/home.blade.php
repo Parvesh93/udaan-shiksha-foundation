@@ -22,11 +22,62 @@
   </div>
 </div>
 <section class="section section-intro"><div class="container intro-grid"><div class="intro-heading"><span class="eyebrow">WHO WE ARE</span><h2>Helping children build stronger <em>futures.</em></h2></div><div class="intro-copy"><p>Education opens the door to a lifetime of opportunities. Udaan Shiksha Foundation is an illustrative nonprofit concept focused on educational inclusion, holistic child development and stronger community support systems.</p><p>Our vision places children at the centre of every decision — creating environments where learning is accessible, engaging and meaningful.</p><a class="text-link" href="{{route('about')}}">Discover our mission <span>↗</span></a></div></div></section>
-<section class="section section-muted"><div class="container"><div class="section-top"><div><span class="eyebrow">OUR FOCUS AREAS</span><h2>Supporting every stage <br>of a child's journey.</h2></div><a class="text-link" href="{{route('programs')}}">View all programs <span>↗</span></a></div><div class="program-grid">
+<style>
+/* Self-contained focus carousel styling avoids old cached CSS breaking this section. */
+.focus-carousel-section{overflow:hidden}
+.focus-carousel-section .section-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}
+.focus-carousel-section .section-top>div{min-width:0}
+.focus-carousel-section .focus-carousel-actions{display:flex!important;justify-content:flex-end;gap:10px;margin:0 0 16px}
+.focus-carousel-section .focus-carousel-arrow{display:grid!important;place-items:center!important;width:45px!important;height:45px!important;flex:0 0 45px!important;background:#fff!important;border:1px solid #ceded7!important;color:#176b60!important;border-radius:50%!important;font-size:22px!important;cursor:pointer!important;transition:background .2s,color .2s,border-color .2s}
+.focus-carousel-section .focus-carousel-arrow:hover:not(:disabled){background:#176b60!important;color:#fff!important;border-color:#176b60!important}
+.focus-carousel-section .focus-carousel-arrow:disabled{opacity:.35!important;cursor:default!important}
+.focus-carousel-section .focus-carousel-arrow:focus-visible{outline:3px solid #e6b46c!important;outline-offset:3px!important}
+.focus-carousel-section .focus-carousel-track{display:flex!important;flex-wrap:nowrap!important;align-items:stretch!important;gap:22px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory!important;scroll-padding-left:2px!important;overscroll-behavior-x:contain!important;scrollbar-width:thin!important;scrollbar-color:#b3cdc0 transparent!important;padding:4px 2px 18px!important;-webkit-overflow-scrolling:touch!important}
+.focus-carousel-section .focus-carousel-track>.program-card{display:flex!important;flex-direction:column!important;flex:0 0 calc((100% - 44px)/2.35)!important;min-width:0!important;max-width:none!important;scroll-snap-align:start!important;box-sizing:border-box!important}
+.focus-carousel-section .focus-carousel-track>.program-card>a{display:block!important;overflow:hidden!important;flex:0 0 auto!important}
+.focus-carousel-section .focus-carousel-track>.program-card>a img{display:block!important;width:100%!important;height:238px!important;object-fit:cover!important}
+.focus-carousel-section .focus-carousel-track>.program-card .program-content{display:flex!important;flex:1 1 auto!important;flex-direction:column!important;align-items:flex-start!important;padding:25px!important}
+.focus-carousel-section .focus-carousel-track>.program-card .program-content h3{font-size:22px!important;margin:12px 0!important}
+.focus-carousel-section .focus-carousel-track>.program-card .program-content p{margin:0 0 18px!important}
+.focus-carousel-section .focus-carousel-track>.program-card .card-link{margin-top:auto!important}
+@media(max-width:900px){.focus-carousel-section .focus-carousel-track>.program-card{flex-basis:calc((100% - 18px)/1.65)!important}.focus-carousel-section .focus-carousel-track{gap:18px!important}}
+@media(max-width:600px){.focus-carousel-section .section-top{align-items:flex-start!important;flex-direction:column!important;gap:10px!important}.focus-carousel-section .section-top h2{font-size:clamp(1.9rem,8vw,2.5rem)!important}.focus-carousel-section .focus-carousel-actions{margin-bottom:10px!important}.focus-carousel-section .focus-carousel-arrow{width:40px!important;height:40px!important;flex-basis:40px!important}.focus-carousel-section .focus-carousel-track{gap:14px!important}.focus-carousel-section .focus-carousel-track>.program-card{flex-basis:86%!important}.focus-carousel-section .focus-carousel-track>.program-card>a img{height:205px!important}.focus-carousel-section .focus-carousel-track>.program-card .program-content{padding:22px!important}}
+@media(prefers-reduced-motion:reduce){.focus-carousel-section .focus-carousel-arrow{transition:none!important}.focus-carousel-section .focus-carousel-track{scroll-behavior:auto!important}}
+</style>
+<section class="section section-muted focus-carousel-section" aria-labelledby="focus-areas-heading"><div class="container"><div class="section-top"><div><span class="eyebrow">OUR FOCUS AREAS</span><h2 id="focus-areas-heading">Supporting every stage <br>of a child's journey.</h2></div><a class="text-link" href="{{route('programs')}}">View all programs <span>↗</span></a></div><div class="focus-carousel-actions"><button class="focus-carousel-arrow" type="button" data-focus-prev aria-label="Previous focus area">←</button><button class="focus-carousel-arrow" type="button" data-focus-next aria-label="Next focus area">→</button></div><div class="program-grid focus-carousel-track" data-focus-carousel role="region" aria-label="Education focus areas" aria-roledescription="carousel" tabindex="0">
 <article class="program-card"><a href="{{route('programs')}}#learning"><img src="{{ config('showcase_images.home_program_learning') }}" alt="Schoolchildren learning together in a classroom" loading="lazy"></a><div class="program-content"><span class="program-number">01 / EDUCATION</span><h3>Foundational Learning</h3><p>Building essential literacy, numeracy and learning confidence through supportive educational opportunities.</p><a class="card-link" href="{{route('programs')}}#learning">Explore program <span>↗</span></a></div></article>
 <article class="program-card"><a href="{{route('programs')}}#creativity"><img src="{{ config('showcase_images.home_program_creativity') }}" alt="Indian children participating in classroom learning" loading="lazy"></a><div class="program-content"><span class="program-number">02 / DEVELOPMENT</span><h3>Creative Development</h3><p>Encouraging curiosity, self-expression and problem-solving through activity-based learning.</p><a class="card-link" href="{{route('programs')}}#creativity">Explore program <span>↗</span></a></div></article>
 <article class="program-card"><a href="{{route('programs')}}#life-skills"><img src="{{ config('showcase_images.home_program_skills') }}" alt="Children engaged in a classroom education activity" loading="lazy"></a><div class="program-content"><span class="program-number">03 / LIFE SKILLS</span><h3>Skills for Tomorrow</h3><p>Nurturing communication, confidence, teamwork and resilience for life beyond the classroom.</p><a class="card-link" href="{{route('programs')}}#life-skills">Explore program <span>↗</span></a></div></article>
-</div></div></section>
+</div></div></section><script>
+document.addEventListener('DOMContentLoaded',function(){
+  const track=document.querySelector('[data-focus-carousel]');
+  if(!track)return;
+  const prev=document.querySelector('[data-focus-prev]');
+  const next=document.querySelector('[data-focus-next]');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  const getStep=()=>{
+    const card=track.querySelector('.program-card');
+    if(!card)return track.clientWidth;
+    return card.getBoundingClientRect().width+(parseFloat(getComputedStyle(track).gap)||0);
+  };
+  const update=()=>{
+    if(prev)prev.disabled=track.scrollLeft<=3;
+    if(next)next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-3;
+  };
+  if(prev)prev.addEventListener('click',()=>track.scrollBy({left:-getStep(),behavior:reduce.matches?'instant':'smooth'}));
+  if(next)next.addEventListener('click',()=>track.scrollBy({left:getStep(),behavior:reduce.matches?'instant':'smooth'}));
+  track.addEventListener('scroll',update,{passive:true});
+  track.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
+      e.preventDefault();
+      track.scrollBy({left:getStep()*(e.key==='ArrowRight'?1:-1),behavior:reduce.matches?'instant':'smooth'});
+    }
+  });
+  window.addEventListener('resize',update,{passive:true});
+  update();
+});
+</script>
+
 
 <section class="section home-projects-section" id="our-projects" aria-labelledby="home-projects-title">
  <div class="container">
