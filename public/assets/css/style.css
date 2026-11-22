@@ -16,3 +16,44 @@
 .volunteer-form .consent-row input{width:18px;height:18px;flex:0 0 18px;margin-top:2px;accent-color:var(--teal)}
 .volunteer-form .btn{justify-self:start}
 @media(max-width:900px){.volunteer-layout{grid-template-columns:1fr;gap:30px}}
+
+/* Subtle premium motion for the public site; no animation dependencies */
+.site-header{transition:box-shadow .25s ease,background-color .25s ease}
+.site-header.is-scrolled{box-shadow:0 8px 24px rgba(10,45,43,.08)}
+.impact-marquee{overflow:hidden;background:#e9f2ee;border-top:1px solid #d6e8df;border-bottom:1px solid #d6e8df;padding:19px 0;white-space:nowrap}
+.impact-marquee-track{display:flex;width:max-content;animation:impact-move 48s linear infinite}
+.impact-marquee-set{display:flex;align-items:center;gap:36px;flex:none;padding-right:36px}
+.impact-marquee-set span{font:800 12px/1.4 'Manrope',sans-serif;letter-spacing:.13em;color:#245d50}
+.impact-marquee-set b{font-size:17px;color:#d2a65d;font-weight:400}
+.impact-marquee:hover .impact-marquee-track{animation-play-state:paused}
+@keyframes impact-move{to{transform:translateX(-50%)}}
+.hero-photo{animation:hero-arrive 1.2s ease-out both}
+.hero-content{animation:hero-content-arrive .95s .12s ease-out both}
+@keyframes hero-arrive{from{opacity:.75;transform:scale(1.035)}to{opacity:1;transform:scale(1)}}
+@keyframes hero-content-arrive{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.will-reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1);transition-delay:var(--reveal-delay,0ms)}
+.will-reveal.is-visible{opacity:1;transform:none}
+.program-card,.donation-project,.values-grid article,.metric-card{transition:transform .28s ease,box-shadow .28s ease}
+.program-card:hover,.donation-project:hover,.values-grid article:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(14,65,57,.11)}
+.gallery-grid img,.feature-media img,.interior-hero-grid img{transition:filter .4s ease,transform .6s ease}
+.gallery-grid img:hover,.feature-media img:hover{filter:saturate(1.07)}
+.btn{position:relative;transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease}
+.btn:hover{box-shadow:0 9px 22px rgba(13,79,66,.18)}
+.btn:focus-visible,.text-link:focus-visible,.card-link:focus-visible{outline:3px solid #dbad5d;outline-offset:3px}
+@media(max-width:768px){
+ .impact-marquee{padding:14px 0}
+ .impact-marquee-track{animation-duration:60s}
+ .impact-marquee-set{gap:24px;padding-right:24px}
+ .impact-marquee-set span{font-size:10px}
+ .will-reveal{transform:translateY(12px)}
+}
+@media(prefers-reduced-motion:reduce){
+ .impact-marquee-track,.hero-photo,.hero-content{animation:none!important}
+ .impact-marquee-track{width:auto;flex-wrap:wrap}
+ .impact-marquee-set:nth-child(2){display:none}
+ .impact-marquee-set{flex-wrap:wrap;white-space:normal}
+ .will-reveal{opacity:1!important;transform:none!important;transition:none!important}
+ .program-card,.donation-project,.values-grid article,.btn,.site-header{transition:none!important}
+ .program-card:hover,.donation-project:hover,.values-grid article:hover,.btn:hover{transform:none;box-shadow:none}
+ html{scroll-behavior:auto}
+}
