@@ -70,3 +70,17 @@
 @media(max-width:830px){.project-hero-grid,.project-detail-grid{grid-template-columns:minmax(0,1fr)}.project-hero-image{height:365px}.project-donation-sidebar{position:static}.project-related-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:570px){.project-detail-hero{padding:20px 0 40px}.project-hero-copy h1{font-size:2.5rem}.project-hero-copy>p{font-size:15px}.project-hero-actions{flex-direction:column;align-items:stretch}.project-hero-image{height:245px}.project-highlights{grid-template-columns:1fr;margin-bottom:35px}.project-highlights>div{border-right:0;border-bottom:1px solid #dfebe4;padding:15px 20px}.project-highlights>div:last-child{border-bottom:0}.project-donation-card{padding:20px}.project-funding-figures strong{font-size:20px}.project-related-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.project-amount-choices button{transition:none}}
+
+/* Premium focus cards beneath hero */
+.hero-bottom.hero-pillars{background:#0e3139;position:relative;z-index:2;padding:18px 0 20px}
+.hero-pillars .hero-pillars-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:14px;min-height:0}
+.hero-pillars .hero-pillar{display:flex;align-items:center;gap:15px;min-width:0;border:1px solid rgba(219,241,229,.14);border-radius:12px;background:rgba(255,255,255,.045);padding:18px 19px;transition:background-color .25s ease,border-color .25s ease,transform .25s ease}
+.hero-pillars .hero-pillar:hover{background:rgba(255,255,255,.085);border-color:rgba(229,192,129,.45);transform:translateY(-2px)}
+.hero-pillars .hero-pillar-icon{display:grid;place-items:center;width:49px;height:49px;flex:0 0 49px;color:#efc37f;background:rgba(239,195,127,.12);border:1px solid rgba(239,195,127,.23);border-radius:11px}
+.hero-pillars .hero-pillar-icon svg{display:block;width:25px;height:25px}
+.hero-pillars .hero-pillar-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
+.hero-pillars .hero-pillar-copy strong{color:#fff;font:750 13px/1.4 'Manrope',Arial,sans-serif;letter-spacing:.01em}
+.hero-pillars .hero-pillar-copy small{color:#a8c7c6;font:400 11px/1.5 'DM Sans',Arial,sans-serif}
+@media(max-width:1000px) and (min-width:701px){.hero-pillars .hero-pillars-grid{gap:10px}.hero-pillars .hero-pillar{padding:15px 12px;gap:10px}.hero-pillars .hero-pillar-icon{width:41px;height:41px;flex-basis:41px}.hero-pillars .hero-pillar-icon svg{width:22px;height:22px}.hero-pillars .hero-pillar-copy strong{font-size:12px}.hero-pillars .hero-pillar-copy small{font-size:10px}}
+@media(max-width:700px){.hero-bottom.hero-pillars{padding:13px 0}.hero-pillars .hero-pillars-grid{grid-template-columns:minmax(0,1fr);gap:9px;flex-wrap:initial;padding:0}.hero-pillars .hero-pillar{padding:12px 14px;gap:13px;border-radius:10px}.hero-pillars .hero-pillar-icon{width:42px;height:42px;flex-basis:42px}.hero-pillars .hero-pillar-icon svg{width:22px;height:22px}.hero-pillars .hero-pillar-copy strong{font-size:12px}.hero-pillars .hero-pillar-copy small{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.hero-pillars .hero-pillar{transition:none}.hero-pillars .hero-pillar:hover{transform:none}}
