@@ -110,3 +110,14 @@ After deploying, run `php artisan migrate --force` from the Laravel application 
 The website's visual references are centralised in `config/showcase_images.php`. Sections use **different photos** selected from actual Pexels listings featuring Indian education settings: classrooms, girls' education, rural schooling, reading and art activities. To change an image later, update just its URL in the configuration file. Contact and donation pages now include appropriate photographic hero sections.
 
 These are **illustrative stock photographs, not photographs of Udaan's programmes, donors or beneficiaries**. Credits and source page URLs for image IDs are accessible at `https://www.pexels.com/photo/<ID>/`. Source IDs in this collection: 18012462, 18650478, 4643352, 31864438, 35558791, 15119089, 18012459, 3231358, 40582287, 3231359, 35152622, 18012456, 32231601, 33947140, 18012458, 18012457. Photographs are loaded from the Pexels CDN rather than shipped in the repository. Confirm usage rights, and for long-term reliability use local optimized copies where possible. If Laravel configuration is cached on the server, run `php artisan config:clear` followed by `php artisan optimize:clear` after deployment.
+
+## Dedicated project details and donation pledge pages
+
+Each published (`active`) project has a public page at `/projects/{slug}` with the project image, summary, description, verified contributions, funding goal, progress bar, related projects and a project-bound donation interest form.
+
+- `GET /projects/{slug}` renders the project. Draft and completed projects are not publicly accessible (404).
+- `POST /projects/{slug}/pledge` validates the donation interest and saves a `pledged` record associated with the project ID resolved on the server. Project association cannot be overridden by a hidden field.
+- The homepage project carousel and donation listing now link to the dedicated detail page.
+- There is no live payment provider, bank transfer or 80G issuance. Only transactions independently verified in the admin dashboard can count toward progress.
+
+Deploy by pulling `main` and running `php artisan optimize:clear`. No new migration is required for this page; it reuses the existing projects and donations tables. Use unique photos and complete descriptions in admin for each Active project.
