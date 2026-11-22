@@ -16,6 +16,8 @@ Route::get('/get-involved',[PageController::class,'getInvolved'])->name('get-inv
 Route::get('/contact',[PageController::class,'contact'])->name('contact');
 Route::get('/volunteer/register',[VolunteerApplicationController::class,'create'])->name('volunteer.register');
 Route::post('/volunteer/register',[VolunteerApplicationController::class,'store'])->middleware('throttle:3,1')->name('volunteer.store');
+Route::get('/projects/{project}',[PublicDonationController::class,'showProject'])->name('projects.show');
+Route::post('/projects/{project}/pledge',[PublicDonationController::class,'storeProject'])->middleware('throttle:3,1')->name('projects.pledge');
 Route::get('/donate',[PublicDonationController::class,'index'])->name('donate');
 Route::post('/donate',[PublicDonationController::class,'store'])->middleware('throttle:3,1')->name('donate.store');
 Route::post('/enquiries',[InquiryController::class,'store'])->middleware('throttle:5,1')->name('enquiries.store');
