@@ -5,7 +5,7 @@
 <title>Dashboard | Udaan Shiksha Foundation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{asset('assets/css/admin.css')}}?v=20261122-1">
+<link rel="stylesheet" href="{{asset('assets/css/admin.css')}}?v=20261122-2">
 </head>
 <body class="ud-admin">
 <input type="checkbox" id="sidebar-toggle" class="sidebar-check">
