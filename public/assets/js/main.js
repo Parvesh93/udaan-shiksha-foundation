@@ -88,3 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize',update,{passive:true});
   update();
 });
+
+/* Suggested amounts for project pledge forms. */
+document.addEventListener('DOMContentLoaded',()=>{
+ const amount=document.querySelector('.project-pledge-form #amount');
+ const choices=[...document.querySelectorAll('.project-amount-choices [data-pledge-value]')];
+ if(!amount||!choices.length)return;
+ const sync=()=>choices.forEach(b=>b.classList.toggle('is-selected',Number(b.dataset.pledgeValue)===Number(amount.value)));
+ choices.forEach(b=>b.addEventListener('click',()=>{amount.value=b.dataset.pledgeValue;sync();amount.focus();}));
+ amount.addEventListener('input',sync);
+ sync();
+});
