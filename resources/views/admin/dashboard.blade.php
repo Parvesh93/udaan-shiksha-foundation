@@ -16,7 +16,10 @@
  <div class="nav-label">OVERVIEW</div>
  <nav class="sidebar-nav" aria-label="Administration">
   <a class="nav-item {{ !request()->filled('type') && !request()->filled('status') ? 'active' : '' }}" href="{{route('admin.dashboard')}}"><span class="nav-icon">▦</span> Dashboard</a>
-  <div class="nav-divider"></div><div class="nav-label in-nav">COMMUNICATION</div>
+  <div class="nav-divider"></div><div class="nav-label in-nav">PROJECTS &amp; DONATIONS</div>
+ <a class="nav-item {{ request()->routeIs('admin.projects.*')?'active':'' }}" href="{{route('admin.projects.index')}}"><span class="nav-icon">▣</span> Projects</a>
+ <a class="nav-item {{ request()->routeIs('admin.donations.*')?'active':'' }}" href="{{route('admin.donations.index')}}"><span class="nav-icon">◎</span> Donations</a>
+ <div class="nav-divider"></div><div class="nav-label in-nav">COMMUNICATION</div>
   <a class="nav-item {{ request('type')==='contact'?'active':'' }}" href="{{route('admin.dashboard',['type'=>'contact'])}}"><span class="nav-icon">✉</span> Contact Enquiries</a>
   <a class="nav-item {{ request('type')==='volunteer'?'active':'' }}" href="{{route('admin.dashboard',['type'=>'volunteer'])}}"><span class="nav-icon">♧</span> Volunteer Interest <span class="nav-count">{{$volunteerCount}}</span></a>
   <a class="nav-item {{ request('type')==='partnership'?'active':'' }}" href="{{route('admin.dashboard',['type'=>'partnership'])}}"><span class="nav-icon">♧</span> Partnerships <span class="nav-count">{{$partnerCount}}</span></a>
